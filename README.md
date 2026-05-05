@@ -45,17 +45,17 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
 
     "Unique ID"                     - 
     "Name"                          -
-Date of Birth                 -
-Gender                        -
-Name Type                     -
-Designation Source            -
-Designation Type              -
-Last Updated                  -
-Address Country               -
-Birth Country                 -
-Nationalities                 -
-National Identifier number    -
-Passport Number               -
-Sanctions Imposed             -
-Other Information             -
-Address Variations            -
+    "Date of Birth"                 -
+    "Gender"                        -
+    "Name Type"                     -
+    "Designation Source"            -
+    "Designation Type"              -
+    "Last Updated"                  -
+    "Address Country"               -
+    "Birth Country"                 -
+    "Nationalities"                 -
+    "National Identifier number"    -
+    "Passport Number"               -
+    "Sanctions Imposed"             -
+    "Other Information"             -
+    "Address Variations"            -
