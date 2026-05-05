@@ -69,9 +69,11 @@ There are two types of filtering:
 Exact filtering - This method searches a column for exact words
 
 Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]
+
 Example: Dataset[Dataset["Unique ID"] == "AFG0001"]
 
 Contain Filtering - This Method searches a column for a partial component
 
 Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]
+
 Example: Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]
