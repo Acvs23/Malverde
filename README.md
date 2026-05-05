@@ -59,3 +59,17 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
     "Sanctions Imposed"             -
     "Other Information"             -
     "Address Variations"            -
+
+3.) "Testbed.ipynb"
+
+This is simply an ipynb file where I import the reducded santions list and use the columns to test filtered searching.
+
+There are two types of filtering:
+
+Exact filtering - This method searches a column for exact words
+Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]
+Example: Dataset[Dataset["Unique ID"] == "AFG0001"]
+
+Contain Filtering - This Method searches a column for a partial component
+Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]
+Example: Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]
