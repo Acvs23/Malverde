@@ -43,8 +43,8 @@ The following columns are renamed to avoid confusion and make focused searching 
 
 This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The values are as followed:
 
-Unique ID                     - 
-Name                          -
+    "Unique ID"                     - 
+    "Name"                          -
 Date of Birth                 -
 Gender                        -
 Name Type                     -
