@@ -39,12 +39,23 @@ The following columns are renamed to avoid confusion and make focused searching 
     "Country of birth": "Birth Country",
     "Nationality(/ies)": "Nationalities"
 
-The finalised reducded datset Contains the following columns:
+2.) "UK_Sanctions_Reduced.csv"
 
-Unique ID,	Name,	Date of Birth,	Gender,	Name Type,	Designation Source,	Designation Type,	Last Updated,	Address Country,	Birth Country,	Nationalities,	National Identifier number,	Passport Number, Sanctions Imposed,	Other Information,	Address Variations
+This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The values are as followed:
 
-
-
-  
-
-
+Unique ID                     - 
+Name                          -
+Date of Birth                 -
+Gender                        -
+Name Type                     -
+Designation Source            -
+Designation Type              -
+Last Updated                  -
+Address Country               -
+Birth Country                 -
+Nationalities                 -
+National Identifier number    -
+Passport Number               -
+Sanctions Imposed             -
+Other Information             -
+Address Variations            -
