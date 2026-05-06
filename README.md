@@ -1,17 +1,17 @@
 # Malverde - Sanctions Data Processing
 ## Datapipeline that produces a reducded dataset of individuals and entities sanctioned by the UK Goverment
 
-The aim if this project was to process and cleanse raw sanctions data from the UK sanctions list (.csv) to create a structured dataset suitable for comparison with the customer records of a ficticious bank.
+The aim of this project was to process and cleanse raw sanctions data from the UK sanctions list (.csv) to create a structured dataset suitable for comparison with the customer records of a ficticious bank.
 
-This file will explain the function and usage of all three files contained in the directory. Given the Size of the original "UK-Sanctions-List.csv", it was unable to be uploaded.
+This file will explain the function and usage of all three files contained in the directory. Given the size of the original "UK-Sanctions-List.csv", it was unable to be uploaded to GitHub.
 
 1.) "Pipeline.ipynb"
 
-This .ipynb file is the datapipeline that identifies and extracts the dataset from the original sanctions list. Upon laoding the csv file, it firstly defines two new variables: 
-"Name_combined" - Composed of the initial table columns: ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5", "Name 6"]
+This .ipynb file is the datapipeline that identifies and extracts the dataset from the original sanctions list. Upon loading the csv file, it firstly defines two new variables: 
+"Name_combined" - Composed of the initial table columns: ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5", "Name 6"], and 
 "Address_combined" - Composed of the initial variables: [""Address Line 1", "Address Line 2", "Address Line 3", "Address Line 4", "Address Line 5", "Address Line 6", "Address Postal Code""]
 
-Secondly, a function called "clean_dob" is used on the variable "D.O.B" (Date of Birth) to clean the variable and return only the known components of the date. For example, A sanctioned individual known to be born in March 1969 would return 03/1969, as oppossed to dd/03/1969 which would be returend withou cleaning.
+Secondly, a function called "clean_dob" is used on the variable "D.O.B" (Date of Birth) to clean the variable and return only the known components of the date. For example, A sanctioned individual known to be born in March 1969 would return 03/1969, as oppossed to dd/03/1969 which would be returned without cleaning.
 
 The next kernel creates the reducded dataset. Beyond the created "Name_combined" and "Address_combined", this dataset requires the following variables from the "UK-Sanctions-List.csv":
 
@@ -30,18 +30,22 @@ The next kernel creates the reducded dataset. Beyond the created "Name_combined"
     "Sanctions Imposed",
     "Other Information"
 
-The data is filtered to prevent any duplicate entries. An entry is deemed a duplicate if it contains an identical "Unique ID", "Name_combined" and "D.O.B" to another entry. Additionally, a new column is created called "Address Variations". THis variable counts the number of duplicated events that contain unique "Address_combined" columns.
+The data is filtered to prevent any duplicate entries. 
+
+# An entry is deemed a duplicate if it contains an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry. 
+
+Additionally, a new column is created called "Address Variations". This variable counts the number of duplicated events that contain unique "Address_combined" columns.
 
 The following columns are renamed to avoid confusion and make focused searching easier:
 
-   "Name_combined": "Name",
+    "Name_combined": "Name",
     "D.O.B": "Date of Birth",
     "Country of birth": "Birth Country",
     "Nationality(/ies)": "Nationalities"
 
 2.) "UK_Sanctions_Reduced.csv"
 
-This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The values are as followed:
+This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The columns are as followed:
 
     "Unique ID"                     - Unique ID associated to an given Individual or Entity
     "Name"                          - Full name provided
@@ -62,9 +66,9 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
 
 3.) "Testbed.ipynb"
 
-This is simply an ipynb file where I import the reducded santions list and use the columns to test filtered searching.
+This is simply a .ipynb file where I import the reducded santions list and use the columns to test filtered searching.
 
-Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. "UK_Sanctions_Reducded.csv" will also need to be downloaded and kept in the same directory in ordere for "Testbed.ipynb" to function properly.
+Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. To run focused searches of your own, "UK_Sanctions_Reducded.csv" will also need to be downloaded and kept in the same directory in order for "Testbed.ipynb" to function properly.
 
 There are two types of filtering:
 
