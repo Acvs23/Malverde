@@ -64,6 +64,8 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
 
 This is simply an ipynb file where I import the reducded santions list and use the columns to test filtered searching.
 
+Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. "UK_Sanctions_Reducded.csv" will also need to be downloaded and kept in the same directory in ordere for "Testbed.ipynb" to function properly.
+
 There are two types of filtering:
 
 # Exact filtering - This method searches a column for exact words
