@@ -12,6 +12,8 @@ This file will explain the function and usage of all three files contained in th
 
 ## 1.) "Pipeline.ipynb"
 
+One of the key goals of the pipeline is to create a reducded dataset that is smaller than the 58x57,000 original datset whilst maintaing unique identifiers capable of identyfying sanctioned individuals.
+
 This .ipynb file is the data pipeline that identifies and extracts the dataset from the original sanctions list. Upon loading the csv file, it firstly defines two new variables: 
 "Name_combined" - Composed of the initial table columns: ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5", "Name 6"], and 
 "Address_combined" - Composed of the initial variables: [""Address Line 1", "Address Line 2", "Address Line 3", "Address Line 4", "Address Line 5", "Address Line 6", "Address Postal Code""]
@@ -75,7 +77,7 @@ UK_Sanctions_Reduced.csv will be generated
 
 ## 2.) "UK_Sanctions_Reduced.csv"
 
-This is the reduced dataset created via the pipeline. It contains 16 columns and 17,103 rows. The columns are as followed:
+This is the reduced dataset created via the pipeline. It contains 16 columns and 17,103 rows. These columns were choosen as the optimal columns for cross checking sacntioned individuals against a fictitious banks customer records. The columns are as followed:
 
     "Unique ID"                     - Unique ID associated to a given Individual or Entity
     "Name"                          - Full name provided
@@ -98,7 +100,7 @@ This is the reduced dataset created via the pipeline. It contains 16 columns and
 
 This is simply a .ipynb file where I import the reduced sanctions list and use the columns to test filtered searching.
 
-Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. To run focused searches of your own, "UK_Sanctions_Reduced.csv" will also need to be downloaded and kept in the same directory in order for "Testbed.ipynb" to function properly.
+Due to visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. To run focused searches of your own, "UK_Sanctions_Reduced.csv" will also need to be downloaded and kept in the same directory in order for "Testbed.ipynb" to function properly.
 
 There are two types of filtering:
 
