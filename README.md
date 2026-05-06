@@ -50,7 +50,7 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
     "Name Type"                     - Designates if name is an Alias or not
     "Designation Source"            - Organisation or Goverement who applied sanctions
     "Designation Type"              - Designates if sanction is against an Individual or an Entity
-    "Last Updated"                  - Time sanctions was lsat revised or updated
+    "Last Updated"                  - Time sanctions was last revised or updated
     "Address Country"               - Address Country of the Individual or Entity
     "Birth Country"                 - Birth Country of Individual (If applicable)
     "Nationalities"                 - Nationalities of Individual (If applicable)
@@ -68,12 +68,12 @@ There are two types of filtering:
 
 # Exact filtering - This method searches a column for exact words
 
-Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]
+    "Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]"
 
-Example: Dataset[Dataset["Unique ID"] == "AFG0001"]
+    "Exampl use - Filtering for all associated entries (Same Unique ID) to a specific sanctioned entity of indiviudal: Dataset[Dataset["Unique ID"] == "AFG0001"]"
 
 # Contain Filtering - This Method searches a column for a partial component
 
-Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]
+    "Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]"
 
-Example: Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]
+    "Example use - Filtering for all sanctioned inviduals born in March 1963: Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]"
