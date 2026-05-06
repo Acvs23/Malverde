@@ -1,19 +1,22 @@
 # Malverde - Sanctions Data Processing
-### Datapipeline that produces a reducded dataset of individuals and entities sanctioned by the UK Goverment
+### Datapipeline that produces a reduced dataset of individuals and entities sanctioned by the UK Goverment
 
-The aim of this project was to process and cleanse raw sanctions data from the UK sanctions list (.csv) to create a structured dataset suitable for comparison with the customer records of a ficticious bank.
+The aim of this project was to process and cleanse raw sanctions data from the UK sanctions list (.csv) to create a structured dataset suitable for comparison with the customer records of a fictitious bank.
 
-This file will explain the function and usage of all three files contained in the directory. Given the size of the original "UK-Sanctions-List.csv", it was unable to be uploaded to GitHub.
+This file will explain the function and usage of all three files contained in the directory. Given the size of the original "UK-Sanctions-List.csv", it was unable to be uploaded to GitHub. It can be downloaded here: https://www.gov.uk/government/publications/the-uk-sanctions-list
 
-1.) "Pipeline.ipynb"
+#### Dependencies
+- Python 3.x
+- pandas
+- Jupyter Notebook
 
-This .ipynb file is the datapipeline that identifies and extracts the dataset from the original sanctions list. Upon loading the csv file, it firstly defines two new variables: 
+## 1.) "Pipeline.ipynb"
+
+This .ipynb file is the data pipeline that identifies and extracts the dataset from the original sanctions list. Upon loading the csv file, it firstly defines two new variables: 
 "Name_combined" - Composed of the initial table columns: ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5", "Name 6"], and 
 "Address_combined" - Composed of the initial variables: [""Address Line 1", "Address Line 2", "Address Line 3", "Address Line 4", "Address Line 5", "Address Line 6", "Address Postal Code""]
 
-Secondly, a function called "clean_dob" is used on the variable "D.O.B" (Date of Birth) to clean the variable and return only the known components of the date. For example, A sanctioned individual known to be born in March 1969 would return 03/1969, as oppossed to dd/03/1969 which would be returned without cleaning.
-
-The next kernel creates the reducded dataset. Beyond the created "Name_combined" and "Address_combined", this dataset requires the following variables from the "UK-Sanctions-List.csv":
+Another kernel creates the reduced dataset. Beyond the created "Name_combined" and "Address_combined", this dataset requires the following variables from the "UK-Sanctions-List.csv":
 
     "Unique ID",
     "Last Updated",
@@ -30,11 +33,9 @@ The next kernel creates the reducded dataset. Beyond the created "Name_combined"
     "Sanctions Imposed",
     "Other Information"
 
-The data is filtered to prevent any duplicate entries. 
+The fields "Address Country", "Birth Country", and "Nationalities" collectively represent the associated countries of an individual or entity.
 
-#### An entry is deemed a duplicate if it contains an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry.
-
-Additionally, a new column is created called "Address Variations". This variable counts the number of duplicated events that contain unique "Address_combined" columns.
+Additionally, a new column is created called "Address Variations". This variable counts the number of duplicated events that contain unique "Address_combined" columns (See Data Quality Assessment).
 
 The following columns are renamed to avoid confusion and make focused searching easier:
 
@@ -43,16 +44,45 @@ The following columns are renamed to avoid confusion and make focused searching 
     "Country of birth": "Birth Country",
     "Nationality(/ies)": "Nationalities"
 
+#### Data Quality Assessment
+
+    - Numerous fields were either empty or NaN values, either due to missing data or not applying to entities. 
+        - These values were universally filled and replaced with "Unknown" for visual improvement of the dataset 
+    - A function called "clean_dob" was used on the variable "D.O.B" (Date of Birth) to clean the variable and return only the known components of the date. 
+        -For example, A sanctioned individual known to be born in March 1969 would return 03/1969, as oppossed to dd/03/1969 which would be returned without cleaning.
+    - Many entries were deemed to be duplicate entries - entries containing an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry. 
+        - A majority of the duplicate events varied only in terms of in-country address. 
+        - Consequently, only a single event is taken from any duplicate events and added to the reduced datasets. 
+        - The number of varying addresses is recorded and stored in the column "Address Variations".
+
+#### How to Run the Pipeline
+
+1. Download the UK Sanctions List from:
+https://www.gov.uk/government/publications/the-uk-sanctions-list
+
+2. Save the CSV file as:
+UK-Sanctions-List.csv
+
+3. Place it in the same directory as Pipeline.ipynb
+
+4. Install dependencies:
+pip install pandas
+
+5. Run Pipeline.ipynb
+
+6. Output:
+UK_Sanctions_Reduced.csv will be generated
+
 ## 2.) "UK_Sanctions_Reduced.csv"
 
-This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The columns are as followed:
+This is the reduced dataset created via the pipeline. It contains 16 columns and 17,103 rows. The columns are as followed:
 
-    "Unique ID"                     - Unique ID associated to an given Individual or Entity
+    "Unique ID"                     - Unique ID associated to a given Individual or Entity
     "Name"                          - Full name provided
     "Date of Birth"                 - Date of birth of Individual (If applicable)
     "Gender"                        - Gender of Individual (If applicable)
     "Name Type"                     - Designates if name is an Alias or not
-    "Designation Source"            - Organisation or Goverement who applied sanctions
+    "Designation Source"            - Organisation or Government who applied sanctions
     "Designation Type"              - Designates if sanction is against an Individual or an Entity
     "Last Updated"                  - Time sanctions was last revised or updated
     "Address Country"               - Address Country of the Individual or Entity
@@ -66,22 +96,22 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
 
 ## 3.) "Testbed.ipynb"
 
-This is simply a .ipynb file where I import the reducded santions list and use the columns to test filtered searching.
+This is simply a .ipynb file where I import the reduced sanctions list and use the columns to test filtered searching.
 
-Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. To run focused searches of your own, "UK_Sanctions_Reducded.csv" will also need to be downloaded and kept in the same directory in order for "Testbed.ipynb" to function properly.
+Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded to view the tables without it being cut off by the screen. To run focused searches of your own, "UK_Sanctions_Reduced.csv" will also need to be downloaded and kept in the same directory in order for "Testbed.ipynb" to function properly.
 
 There are two types of filtering:
 
 #### Exact filtering - This method searches a column for exact words
 
-    "Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]"
+    Format: Dataset[Dataset["Target Column"] == "Exact Target Word"]
 
-    "Example use - Filtering for all associated entries (Same Unique ID) to a specific sanctioned entity of indiviudal:"
-    "Dataset[Dataset["Unique ID"] == "AFG0001"]"
+    Example:
+    Dataset[Dataset["Unique ID"] == "AFG0001"]
 
 #### Contain Filtering - This Method searches a column for a partial component
 
-    "Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]"
+    Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]
 
-    "Example use - Filtering for all sanctioned inviduals born in March 1963:" 
-    "Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]"
+    Example:
+    Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]
