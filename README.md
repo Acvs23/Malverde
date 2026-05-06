@@ -1,5 +1,5 @@
 # Malverde - Sanctions Data Processing
-## Datapipeline that produces a reducded dataset of individuals and entities sanctioned by the UK Goverment
+### Datapipeline that produces a reducded dataset of individuals and entities sanctioned by the UK Goverment
 
 The aim of this project was to process and cleanse raw sanctions data from the UK sanctions list (.csv) to create a structured dataset suitable for comparison with the customer records of a ficticious bank.
 
@@ -32,7 +32,7 @@ The next kernel creates the reducded dataset. Beyond the created "Name_combined"
 
 The data is filtered to prevent any duplicate entries. 
 
-# An entry is deemed a duplicate if it contains an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry. 
+#### An entry is deemed a duplicate if it contains an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry.
 
 Additionally, a new column is created called "Address Variations". This variable counts the number of duplicated events that contain unique "Address_combined" columns.
 
@@ -43,7 +43,7 @@ The following columns are renamed to avoid confusion and make focused searching 
     "Country of birth": "Birth Country",
     "Nationality(/ies)": "Nationalities"
 
-2.) "UK_Sanctions_Reduced.csv"
+## 2.) "UK_Sanctions_Reduced.csv"
 
 This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The columns are as followed:
 
@@ -64,7 +64,7 @@ This is the reducded dataset created via the pipeline. It contains 16 columns an
     "Other Information"             - Explanation of why sanctions were imposed
     "Address Variations"            - Counts the number of unique addresses associated to a given unique entry (Identical Name, Date of birth and Unique ID but alternate addresses)
 
-3.) "Testbed.ipynb"
+## 3.) "Testbed.ipynb"
 
 This is simply a .ipynb file where I import the reducded santions list and use the columns to test filtered searching.
 
@@ -72,14 +72,14 @@ Due to Visual display limitations of Github, "Testbed.ipynb" must be downloaded 
 
 There are two types of filtering:
 
-# Exact filtering - This method searches a column for exact words
+#### Exact filtering - This method searches a column for exact words
 
     "Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]"
 
     "Example use - Filtering for all associated entries (Same Unique ID) to a specific sanctioned entity of indiviudal:"
     "Dataset[Dataset["Unique ID"] == "AFG0001"]"
 
-# Contain Filtering - This Method searches a column for a partial component
+#### Contain Filtering - This Method searches a column for a partial component
 
     "Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]"
 
