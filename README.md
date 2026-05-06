@@ -43,22 +43,22 @@ The following columns are renamed to avoid confusion and make focused searching 
 
 This is the reducded dataset created via the pipeline. It contains 16 columns and 17,103 rows. The values are as followed:
 
-    "Unique ID"                     - 
-    "Name"                          -
-    "Date of Birth"                 -
-    "Gender"                        -
-    "Name Type"                     -
-    "Designation Source"            -
-    "Designation Type"              -
-    "Last Updated"                  -
-    "Address Country"               -
-    "Birth Country"                 -
-    "Nationalities"                 -
-    "National Identifier number"    -
-    "Passport Number"               -
-    "Sanctions Imposed"             -
-    "Other Information"             -
-    "Address Variations"            -
+    "Unique ID"                     - Unique ID associated to an given Individual or Entity
+    "Name"                          - Full name provided
+    "Date of Birth"                 - Date of birth of Individual (If applicable)
+    "Gender"                        - Gender of Individual (If applicable)
+    "Name Type"                     - Designates if name is an Alias or not
+    "Designation Source"            - Organisation or Goverement who applied sanctions
+    "Designation Type"              - Designates if sanction is against an Individual or an Entity
+    "Last Updated"                  - Time sanctions was lsat revised or updated
+    "Address Country"               - Address Country of the Individual or Entity
+    "Birth Country"                 - Birth Country of Individual (If applicable)
+    "Nationalities"                 - Nationalities of Individual (If applicable)
+    "National Identifier Number"    - National identifier number of Individual (If applicable)
+    "Passport Number"               - Passport number of Individual (If applicable)
+    "Sanctions Imposed"             - Sanctions imposed on Individual or Entity
+    "Other Information"             - Explanation of why sanctions were imposed
+    "Address Variations"            - Counts the number of unique addresses associated to a given unique entry (Identical Name, Date of birth and Unique ID but alternate addresses)
 
 3.) "Testbed.ipynb"
 
