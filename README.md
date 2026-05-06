@@ -70,10 +70,12 @@ There are two types of filtering:
 
     "Format: Dataset[Dataset[" Target Column"] == "Exact Target Word"]"
 
-    "Exampl use - Filtering for all associated entries (Same Unique ID) to a specific sanctioned entity of indiviudal: Dataset[Dataset["Unique ID"] == "AFG0001"]"
+    "Example use - Filtering for all associated entries (Same Unique ID) to a specific sanctioned entity of indiviudal:"
+    "Dataset[Dataset["Unique ID"] == "AFG0001"]"
 
 # Contain Filtering - This Method searches a column for a partial component
 
     "Format: Dataset[Dataset["Target Column"].str.contains("Target phrase", na=False)]"
 
-    "Example use - Filtering for all sanctioned inviduals born in March 1963: Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]"
+    "Example use - Filtering for all sanctioned inviduals born in March 1963:" 
+    "Dataset[Dataset["Date of Birth"].str.contains("03/1969", na=False)]"
