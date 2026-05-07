@@ -53,9 +53,9 @@ The following columns are renamed to avoid confusion and make focused searching 
     - A function called "clean_dob" was used on the variable "D.O.B" (Date of Birth) to clean the variable and return only the known components of the date. 
         -For example, A sanctioned individual known to be born in March 1969 would return 03/1969, as oppossed to dd/03/1969 which would be returned without cleaning.
     - Many entries were deemed to be duplicate entries - entries containing an identical combination of "Unique ID", "Name_combined" and "D.O.B" to another entry. 
-        - A majority of the duplicate events varied only in terms of in-country address. 
+        - Virtually all of the duplicate events varied only in terms of in-country address. 
         - Consequently, only a single event is taken from any duplicate events and added to the reduced datasets. 
-        - The number of varying addresses is recorded and stored in the column "Address Variations".
+        - The number of varying addresses, and thus duplicate entries, is recorded and stored in the column "Address Variations".
 
 #### How to Run the Pipeline
 
