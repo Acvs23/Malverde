@@ -79,22 +79,22 @@ UK_Sanctions_Reduced.csv will be generated
 
 This is the reduced dataset created via the pipeline. It contains 16 columns and 17,103 rows. These columns were choosen as the optimal columns for cross checking sacntioned individuals against a fictitious banks customer records. The columns are as followed:
 
-    "Unique ID"                     - Unique ID associated to a given Individual or Entity                        - Secondary Identifier
-    "Name"                          - Full name provided                                                          - Primary Identifier
-    "Date of Birth"                 - Date of birth of Individual (If applicable)                                 - Primary Identifier
-    "Gender"                        - Gender of Individual (If applicable)                                        - Primary Identifier
-    "Name Type"                     - Designates if name is an Alias or not                                       - Secondary Information
-    "Designation Source"            - Organisation or Government who applied sanctions                            - Secondary Information
-    "Designation Type"              - Designates if sanction is against an Individual or an Entity                - Primary Information
-    "Last Updated"                  - Time sanctions was last revised or updated                                  - Secondary Information
-    "Address Country"               - Address Country of the Individual or Entity                                 - Primary Identifier
-    "Birth Country"                 - Birth Country of Individual (If applicable)                                 - Primary Identifier
-    "Nationalities"                 - Nationalities of Individual (If applicable)                                 - Primary Identifier
-    "National Identifier Number"    - National identifier number of Individual (If applicable)                    - Secondary Identifier
-    "Passport Number"               - Passport number of Individual (If applicable)                               - Secondary Identifier
-    "Sanctions Imposed"             - Sanctions imposed on Individual or Entity                                   - Seconday Information
-    "Other Information"             - Explanation of why sanctions were imposed                                   - Secondary Information
-    "Address Variations"            - Counts the number of unique addresses associated to a given unique entry    - Tertiary Information
+    "Unique ID"                     - Unique ID associated to a given Individual or Entity                        - Information
+    "Name"                          - Full name provided                                                          - Identifier
+    "Date of Birth"                 - Date of birth of Individual (If applicable)                                 - Identifier
+    "Gender"                        - Gender of Individual (If applicable)                                        - Identifier
+    "Name Type"                     - Designates if name is an Alias or not                                       - Information
+    "Designation Source"            - Organisation or Government who applied sanctions                            - Information
+    "Designation Type"              - Designates if sanction is against an Individual or an Entity                - Information
+    "Last Updated"                  - Time sanctions was last revised or updated                                  - Information
+    "Address Country"               - Address Country of the Individual or Entity                                 - Identifier
+    "Birth Country"                 - Birth Country of Individual (If applicable)                                 - Identifier
+    "Nationalities"                 - Nationalities of Individual (If applicable)                                 - Identifier
+    "National Identifier Number"    - National identifier number of Individual (If applicable)                    - Identifier
+    "Passport Number"               - Passport number of Individual (If applicable)                               - Identifier
+    "Sanctions Imposed"             - Sanctions imposed on Individual or Entity                                   - Information
+    "Other Information"             - Explanation of why sanctions were imposed                                   - Information
+    "Address Variations"            - Counts the number of unique addresses associated to a given unique entry    - Information
 
 ## 3.) "Testbed.ipynb"
 
